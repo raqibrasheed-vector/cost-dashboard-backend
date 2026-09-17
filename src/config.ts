@@ -15,7 +15,9 @@ export const config = {
   apiRoot,
   port: positiveInteger(process.env.PORT, 3001),
   corsOrigin: process.env.CORS_ORIGIN?.trim() || "http://localhost:5173",
-  uploadRoot: path.resolve(apiRoot, ".tmp", "uploads"),
+  uploadRoot: process.env.VERCEL
+    ? path.join("/tmp", "cost-report-uploads")
+    : path.resolve(apiRoot, ".tmp", "uploads"),
 };
 
 export function requiredEnvironment(name: string): string {
