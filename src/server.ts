@@ -156,6 +156,9 @@ export async function createApp() {
   app.use(cors({ origin: config.corsOrigin, credentials: true }));
   app.use(express.json({ limit: "1mb" }));
 
+  app.get("/", (_request, response) => {
+    response.json({ name: "cost-report-api", health: "/health", docs: "/docs" });
+  });
   app.get("/health", (_request, response) => {
     response.json({ status: "ok", runtime: "node", report_engine: "typescript" });
   });
@@ -330,7 +333,7 @@ export async function createApp() {
   return app;
 }
 
-if (process.env.NODE_ENV !== "test") {
+if (process.env.NODE_ENV !== "test" && process.env.VERCEL !== "1") {
   const app = await createApp();
   app.listen(config.port, "0.0.0.0", () => {
     console.log(`Cost Report API listening on http://0.0.0.0:${config.port}`);
