@@ -1,0 +1,33 @@
+{
+  "name": "cost-report-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "node --import tsx --test tests/**/*.test.ts",
+    "test:live": "node --import tsx scripts/live-integration-test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.116.0",
+    "cors": "^2.8.6",
+    "csv-parse": "^7.0.2",
+    "decimal.js": "^10.6.0",
+    "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "multer": "^2.4.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.2.0",
+    "@types/node": "^26.5.1",
+    "@types/swagger-ui-express": "^4.1.8",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
