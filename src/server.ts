@@ -332,7 +332,7 @@ export async function createApp() {
 
 if (process.env.NODE_ENV !== "test") {
   const app = await createApp();
-  app.listen(config.port, "127.0.0.1", () => {
-    console.log(`Cost Report API listening on http://127.0.0.1:${config.port}`);
+  app.listen(config.port, "0.0.0.0", () => {
+    console.log(`Cost Report API listening on http://0.0.0.0:${config.port}`);
   });
 }
